@@ -11,6 +11,8 @@ class bigint {
 
   public:
 
+	const int CAPACITY = 400;
+
 	bigint(); //Default Constructor
 
 	bigint(int val); //Constructor to initilize a bigint  to a value I provide
