@@ -39,16 +39,39 @@ void bigint::debugPrint(std::ostream& out) const {
 
 std::ostream operator<<(std::ostream& out, const bigint& bi) {
 
-	out << 
+	int count = 0;
+	int flag = 0;
+
+	for(int i=CAPACITY-1; i>=0; i--) {
+		if(count%80 == 0) {
+			out << endl;
+		}
+
+		count++;
+
+		if(bi.arr(i)!=0) {
+
+			flag = 1;
+		}
+
+		if(flag == 1) {
+			out << bi.arr[i];
+		}
 
 
-
+}
 
 }
 
 bool operator==(const bigint& bi1) const {
 
-	
+	for(int i=0; i<CAPACITY; i++) {
+		if(arr[i]!=bi1.arr[i]) {
+			return false;
+		}
+		return true;
+
+	}
 
 
 }
