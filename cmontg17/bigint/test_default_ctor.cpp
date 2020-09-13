@@ -11,7 +11,7 @@
 int main () {
     // Setup
 
-    // Test 
+    // Test
     bigint bi;
 
     // Verify
