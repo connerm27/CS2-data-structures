@@ -25,7 +25,6 @@ class bigint {
 
 
   private:
-
 	int arr[CAPACITY];
 
 
