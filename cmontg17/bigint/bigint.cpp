@@ -1,13 +1,13 @@
-#include "bigint.hpp""
+#include "bigint.hpp"
 #include <iostream>
 
 
-int main() {
+bigint();
 
-	bigint();
-	
-	bigint(128);
+bigint(128);
+
+bigint("14890");
 
 
 
-}
+
