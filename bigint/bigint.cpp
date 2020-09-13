@@ -2,11 +2,17 @@
 #include <iostream>
 
 
-bigint();
+bigint::bigint() {
+	
+	arr[0] = 0;
 
-bigint(128);
+}
 
-bigint("14890");
+
+
+
+
+
 
 
 
