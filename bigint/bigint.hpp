@@ -1,24 +1,30 @@
-
 #ifndef _BIGINT_HPP_
 #define _BIGINT_HPP_
 
-
-
 #include <iostream>
+
+const int CAPACITY = 400;
+
 
 class bigint {
 
 
   public:
+        bigint(); //Default Constructor
 
-	const int CAPACITY = 400;
+        bigint(int val); //Constructor to initilize a bigint to integer
 
-	bigint(); //Default Constructor
+        bigint(const char size[]);  //Constructor to initilize a bigint
 
-	bigint(int val); //Constructor to initilize a bigint  to a value I provide
+	friend std::ostream operator<<(std::ostream& out, const bigint& bi); //Overloaded <<
 
-	bigint(const char bigVal[]);  //Constructor to initilize a bigint to a big int val
+	friend bool operator==(const bigint& bi1, const bigint& bi2); //Overloaded ==
 
+
+
+
+  private:
+  		int size[CAPACITY];
 
 
 
