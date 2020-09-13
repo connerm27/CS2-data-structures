@@ -14,7 +14,7 @@ class bigint {
 
         bigint(int val); //Constructor to initilize a bigint to integer
 
-        bigint(const char size[]);  //Constructor to initilize a bigint
+        bigint(const char[]);  //Constructor to initilize a bigint
 
 	void debugPrint(std::ostream&) const;
 
@@ -23,10 +23,9 @@ class bigint {
 	friend bool operator==(const bigint& bi1, const bigint& bi2); //Overloaded ==
 
 
-
-
   private:
-  		int size[CAPACITY];
+
+	int arr[CAPACITY];
 
 
 
