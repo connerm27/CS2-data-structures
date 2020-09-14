@@ -32,7 +32,16 @@ bigint::bigint(int val) {
 
 bigint::bigint(const char bigArr[]) {
 
+	//Sets all elements of arr to 0
+	for(int i=0; i<CAPACITY; ++i) {
+                arr[i] = 0;
+        }
 
+
+
+	for(int i=CAPACITY-1; i>=0;  --i) {
+		arr[i] = bigArr[i]-48;
+	}
 
 
 }
@@ -79,13 +88,17 @@ std::ostream& operator<<(std::ostream& out, const bigint& bi) {
 
 bool operator==(const bigint& bi1, const bigint& bi2) {
 
+
+
+	bool result = true;
+
 	for(int i=0; i<CAPACITY; i++) {
 		if(bi1.arr[i]!=bi2.arr[i]) {
-			return false;
+			result = false;
 		}
-		return true;
-
 	}
+
+	return result;
 
 
 }
