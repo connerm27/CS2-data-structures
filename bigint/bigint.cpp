@@ -39,8 +39,14 @@ bigint::bigint(const char bigArr[]) {
 
 
 
-	for(int i=CAPACITY-1; i>=0;  --i) {
-		arr[i] = bigArr[i]-48;
+	int c = 0;
+
+	while(bigArr[c] != '\0') {
+		c++;
+	}
+
+	for(int i=0; i<c; ++i) {
+		arr[i] = bigArr[c-i-1]-'0';
 	}
 
 
