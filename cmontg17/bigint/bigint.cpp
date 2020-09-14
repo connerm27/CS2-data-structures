@@ -25,7 +25,10 @@ bigint::bigint(int val) {
 
 }
 
-bigint::bigint(const char[]) {
+bigint::bigint(const char []) {
+
+//Don't understand this one
+
 
 }
 
@@ -37,30 +40,35 @@ void bigint::debugPrint(std::ostream& out) const {
 }
 
 
-std::ostream operator<<(std::ostream& out, const bigint& bi) {
+std::ostream& operator<<(std::ostream& out, const bigint& bi) {
 
 	int count = 0;
 	int flag = 0;
 
-	for(int i=CAPACITY-1; i>=0; i--) {
-		if(count%80 == 0) {
-			out << std:: endl;
-		}
+	for(int i=CAPACITY-1; i>=0; --i) {
 
-		count++;
 
-		if(bi.arr[i]!=0) {
+
+		if(bi.arr[i]!=0 || i==0) {
 
 			flag = 1;
 		}
 
 		if(flag == 1) {
-			out << bi.arr[i];
+
+			if(count%80 == 0){
+				out << std::endl;
+			}
+
+			count++;
+				out << bi.arr[i];
+
 		}
 
 
-}
+	}
 
+	return out;
 }
 
 
