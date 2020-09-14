@@ -14,7 +14,7 @@ class bigint {
 
         bigint(int val); //Constructor to initilize a bigint to integer
 
-        bigint(const char[]);  //Constructor to initilize a bigint
+        bigint(const char bigArr[]);  //Constructor to initilize a bigint
 
 
 	void debugPrint(std::ostream&) const;

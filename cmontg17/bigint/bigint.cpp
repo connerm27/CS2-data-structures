@@ -13,6 +13,11 @@ bigint::bigint(int val) {
 
 	int placeholder = val;
 
+ for(int i=0; i<CAPACITY;++i) {
+                arr[i] = 0;
+        }
+
+
 	for(int i=0; i<CAPACITY; ++i) {
 		arr[i] = placeholder % 10;
 		placeholder = placeholder/10;
@@ -25,9 +30,9 @@ bigint::bigint(int val) {
 
 }
 
-bigint::bigint(const char []) {
+bigint::bigint(const char bigArr[]) {
 
-//Don't understand this one
+
 
 
 }
