@@ -21,8 +21,7 @@ class bigint {
 
 	friend std::ostream operator<<(std::ostream& out, const bigint& bi); //Operator
 
-	 bool operator==(const bigint& bi1);  //Operator
-
+	friend  bool operator==(const bigint& bi1, const bigint& bi2);  //Operator
 
   private:
 	int arr[CAPACITY];
