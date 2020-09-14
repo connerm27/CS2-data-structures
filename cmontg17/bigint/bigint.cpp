@@ -26,7 +26,7 @@ bigint::bigint(int val) {
 }
 
 bigint::bigint(const char[]) {
-	//Needs finishing
+
 }
 
 void bigint::debugPrint(std::ostream& out) const {
@@ -62,10 +62,12 @@ std::ostream operator<<(std::ostream& out, const bigint& bi) {
 }
 
 }
-bool operator==(const bigint& bi1) {
+
+
+bool operator==(const bigint& bi1, const bigint& bi2) {
 
 	for(int i=0; i<CAPACITY; i++) {
-		if(arr[i]!=bi1.arr[i]) {
+		if(bi1.arr[i]!=bi2.arr[i]) {
 			return false;
 		}
 		return true;
