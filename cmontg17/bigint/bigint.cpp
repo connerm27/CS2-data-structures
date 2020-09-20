@@ -113,6 +113,9 @@ bool operator==(const bigint& bi1, const bigint& bi2) {
 std::istream& operator>>(std::istream& in, const bigint& bi) {
 
 
+
+
+
 }
 
 bigint operator+(const bigint& bi) {
@@ -122,9 +125,9 @@ bigint operator+(const bigint& bi) {
 
 
 
-int& iDigit::operator[](int pos) {
+int bigint::operator[](int index) const {
 
-
+	
 
 }
 
