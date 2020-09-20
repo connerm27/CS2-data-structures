@@ -27,7 +27,7 @@ class bigint {
 
 	bigint operator+(const bigint& bi) const; //Operator
 
-	int& operator[](int pos); //Operator
+	int operator[](int) const; //Operator
 
   private:
 	int arr[CAPACITY];
