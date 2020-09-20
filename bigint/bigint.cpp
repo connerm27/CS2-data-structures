@@ -112,13 +112,45 @@ bool operator==(const bigint& bi1, const bigint& bi2) {
 
 std::istream& operator>>(std::istream& in, const bigint& bi) {
 
+	for(int i=0; i<CAPACITY; ++i) {
 
+		in >> bi.arr[i];
+		break;
 
+	}
 
+	return in;
 
 }
 
-bigint operator+(const bigint& bi) {
+
+
+bigint bigint::operator+(const bigint& bi) const {
+
+bigint final;
+
+int carry = 0;
+
+for(int i=CAPACITY-1; i>=0; --i) {
+
+	int sAdd = arr[i]+bi.arr[i];
+	if (carry == 1) {
+		sAdd = sAdd + 1;
+		carry = 0;
+	}
+
+	if(sAdd >= 10) {
+		carry = 1;
+		sAdd = sAdd % 10;
+	}
+	
+	final.arr[i] = sAdd;
+
+}
+
+
+
+return final;
 
 
 }
@@ -127,7 +159,10 @@ bigint operator+(const bigint& bi) {
 
 int bigint::operator[](int index) const {
 
-	
+	int val = arr[CAPACITY-(index+1)];
+
+	return val;
+
 
 }
 

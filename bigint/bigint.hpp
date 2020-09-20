@@ -25,7 +25,7 @@ class bigint {
 
 	friend std::istream& operator>>(std::istream& in, const bigint& bi); //Operator
 
-	bigint operator+(const bigint& bi) const; //Operator
+	bigint operator+(const bigint&) const; //Operator
 
 	int operator[](int) const; //Operator
 
