@@ -22,7 +22,7 @@ int main () {
         bigint right(0);
         bigint result;
 
-        // Test 
+        // Test
         result = left + right;
 
         // Verify
@@ -40,6 +40,9 @@ int main () {
 
       // Test
       result = left + right;
+
+
+
 
       // Verify
       assert(left   == 1);
@@ -67,17 +70,19 @@ int main () {
 	  
 	  //-----------------------------------------------------
       // Setup Fixture     
-        bigint left(334);
-        bigint right(882);
+        bigint left(12);
+        bigint right(19);
         bigint result;
 
         //Test
         result = left + right;
-        
+
+
+
         //Verify
-        assert(left == 334);
-        assert(right == 882);
-        assert(result == 1216);
+        assert(left == 12);
+        assert(right == 19);
+        assert(result == 31);
 
     }
 	{
@@ -104,7 +109,7 @@ int main () {
         bigint left(877);
         bigint right(26);
         bigint result;
-
+	
         //Test
         result = left + right;
         
