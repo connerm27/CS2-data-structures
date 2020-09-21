@@ -56,7 +56,8 @@ void bigint::debugPrint(std::ostream& out) const {
 	for(int i=CAPACITY-1; i>=0; i--) {
 		out << arr[i] << "|";
 	}
-
+	
+	out << std::endl;
 }
 
 
@@ -110,13 +111,24 @@ bool operator==(const bigint& bi1, const bigint& bi2) {
 }
 
 
-std::istream& operator>>(std::istream& in, const bigint& bi) {
+std::istream& operator>>(std::istream& in, bigint& bi) {
 
-	for(int i=0; i<CAPACITY; ++i) {
+	bigint temp;
+	char x;
+	for(int i=0; !in.eof(); ++i) {
 
-		in >> bi.arr[i];
-		break;
+		in.get(x);
+		if(x != ';') {
 
+		int test = x - int('0');
+		bi.arr[i] = test;
+
+		} else {
+
+			for(int i=0; i<CAPACITY;++i) {
+		                temp.arr[i] = bi.arr[i];
+        		}
+		}
 	}
 
 	return in;
@@ -131,9 +143,14 @@ bigint final;
 
 int carry = 0;
 
-for(int i=CAPACITY-1; i>=0; --i) {
+for(int i=0; i<CAPACITY; ++i) {
+
+
+//	std::cout << "arr i" << arr[i] << std::endl;
+//	std::cout <<"bi arr i" << bi.arr[i] << std::endl;
 
 	int sAdd = arr[i]+bi.arr[i];
+//	std::cout << "this is sADD " << sAdd << std::endl;
 	if (carry == 1) {
 		sAdd = sAdd + 1;
 		carry = 0;
@@ -143,12 +160,13 @@ for(int i=CAPACITY-1; i>=0; --i) {
 		carry = 1;
 		sAdd = sAdd % 10;
 	}
-	
+
+//	sAdd = 10;
+//	std::cout << "This is sAdd" <<  sAdd << std::endl;
+
 	final.arr[i] = sAdd;
 
 }
-
-
 
 return final;
 
@@ -159,7 +177,7 @@ return final;
 
 int bigint::operator[](int index) const {
 
-	int val = arr[CAPACITY-(index+1)];
+	int val = arr[index];
 
 	return val;
 

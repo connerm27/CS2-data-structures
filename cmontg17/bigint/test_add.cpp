@@ -70,19 +70,17 @@ int main () {
 	  
 	  //-----------------------------------------------------
       // Setup Fixture     
-        bigint left(12);
-        bigint right(19);
+        bigint left(334);
+        bigint right(882);
         bigint result;
 
         //Test
         result = left + right;
 
-
-
         //Verify
-        assert(left == 12);
-        assert(right == 19);
-        assert(result == 31);
+        assert(left == 334);
+        assert(right == 882);
+        assert(result == 1216);
 
     }
 	{
