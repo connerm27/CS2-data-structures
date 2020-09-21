@@ -23,7 +23,7 @@ class bigint {
 
 	friend  bool operator==(const bigint& bi1, const bigint& bi2);  //Operator
 
-	friend std::istream& operator>>(std::istream& in, const bigint& bi); //Operator
+	friend std::istream& operator>>(std::istream& in, bigint& bi); //Operator
 
 	bigint operator+(const bigint&) const; //Operator
 
