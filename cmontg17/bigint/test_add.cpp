@@ -29,6 +29,9 @@ int main () {
         assert(left   == 0);
         assert(right  == 0);
         assert(result == 0);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
+
     }
 
     {
@@ -48,6 +51,8 @@ int main () {
       assert(left   == 1);
       assert(right  == 0);
       assert(result == 1);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
     }
     {
       //------------------------------------------------------
@@ -63,6 +68,8 @@ int main () {
       assert(left   == 1);
       assert(right  == 1);
       assert(result == 2);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
     }
 
     //Add test cases as needed.
@@ -82,6 +89,7 @@ int main () {
         assert(right == 882);
         assert(result == 1216);
 
+	std::cout << left << " + " << right << " == " << result << std::endl;
     }
 	{
 	  
@@ -99,6 +107,8 @@ int main () {
         assert(right == 1243);
         assert(result == 1411);
 
+	std::cout << left << " + " << right << " == " << result << std::endl;
+
     }
 	{
 	  
@@ -115,6 +125,8 @@ int main () {
         assert(left == 877);
         assert(right == 26);
         assert(result == 903);
+	
+	std::cout << left << " + " << right << " == " << result << std::endl;
 
     }
 	{
@@ -133,6 +145,8 @@ int main () {
         assert(right == 0);
         assert(result == 999);
 
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
     }
 	{
 	  
@@ -149,6 +163,8 @@ int main () {
         assert(left == 123);
         assert(right == 777);
         assert(result == 900);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
 
     }
 	{
@@ -167,6 +183,8 @@ int main () {
         assert(right == 1500);
         assert(result == 1774);
 
+	std::cout << left << " + " << right << " == " << result << std::endl;
+
     }
 	{
 	  
@@ -183,6 +201,8 @@ int main () {
         assert(left == 175);
         assert(right == 25);
         assert(result == 200);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
 
     }
 	{
@@ -201,6 +221,8 @@ int main () {
         assert(right == 0);
         assert(result == 467);
 
+	std::cout << left << " + " << right << " == " << result << std::endl;
+
     }
 	{
 	  
@@ -217,6 +239,8 @@ int main () {
         assert(left == 999);
         assert(right == 999);
         assert(result == 1998);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
 
     }
 	{
@@ -235,6 +259,8 @@ int main () {
         assert(right == 1900);
         assert(result == 2000);
 
+	std::cout << left << " + " << right << " == " << result << std::endl;
+
     }
 	{
 	  
@@ -252,6 +278,8 @@ int main () {
         assert(right == 9);
         assert(result == 1004);
 
+	std::cout << left << " + " << right << " == " << result << std::endl;
+
     }
 	{
 	  
@@ -268,6 +296,8 @@ int main () {
         assert(left == 1200);
         assert(right == 0);
         assert(result == 1200);
+
+	std::cout << left << " + " << right << " == " << result << std::endl;
 
     }
 
