@@ -113,23 +113,28 @@ bool operator==(const bigint& bi1, const bigint& bi2) {
 
 std::istream& operator>>(std::istream& in, bigint& bi) {
 
-	bigint temp;
-	char x;
-	for(int i=0; !in.eof(); ++i) {
+	char temp[CAPACITY];
+	char x = '0';
 
-		in.get(x);
+	int i = 0;
+	while(in >> x && i != CAPACITY ) {
+
 		if(x != ';') {
 
-		int test = x - int('0');
-		bi.arr[i] = test;
+		temp[i] = x;
+
+		} else if(x == ' ') {
+			continue;
 
 		} else {
 
-			for(int i=0; i<CAPACITY;++i) {
-		                temp.arr[i] = bi.arr[i];
-        		}
+			break;
 		}
+
+		++i;
 	}
+	temp[i] = '\0';
+	bi = bigint(temp);
 
 	return in;
 
