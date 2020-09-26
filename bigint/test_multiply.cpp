@@ -15,10 +15,12 @@ int main () {
         bigint left(0);
         bigint right(0);
         bigint result;
-        
+	        
         // Test 
         result = left * right;
         
+	std::cout <<  left << " * " << right << " == " << result << std::endl;
+
         // Verify
         assert(left   == 0);
         assert(right  == 0);
@@ -34,7 +36,9 @@ int main () {
         
         // Test 
         result = left * right;
-        
+       
+	std::cout <<  left << " * " << right << " == " << result << std::endl;
+ 
         // Verify
         assert(left   == 1);
         assert(right  == 0);
@@ -51,6 +55,8 @@ int main () {
         // Test 
         result = left * right;
         
+	std::cout <<  left << " * " << right << " == " << result << std::endl;
+
         // Verify
         assert(left   == 0);
         assert(right  == 1);
@@ -66,7 +72,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+	std::cout <<  left << " * " << right << " == " << result << std::endl;        
         // Verify
         assert(left   ==  123);
         assert(right  ==   56);
@@ -82,7 +88,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   ==    65);
         assert(right  ==   321);
@@ -98,7 +104,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   ==  9999);
         assert(right  ==     2);
@@ -114,7 +120,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   ==       2);
         assert(right  ==  999999);
@@ -129,7 +135,7 @@ int main () {
 
         // Test
         result = left * right;
-
+	std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   ==  99);
         assert(right  ==  99);
@@ -146,7 +152,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   == "2222");
         assert(right  == "888888888888888888888888888888888888");
@@ -162,7 +168,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   == "777777777777777777777777777777777777777777777");
         assert(right  == "333333");
@@ -178,7 +184,7 @@ int main () {
         
         // Test 
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         // Verify
         assert(left   == "111111111111111111111111111111111111111111");
         assert(right  == "999999999999999999999999999999999999999999");
@@ -196,7 +202,7 @@ int main () {
 
         //Test
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         //Verify
         assert(left == 333);
         assert(right == 333);
@@ -213,7 +219,7 @@ int main () {
 
         //Test
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         //Verify
         assert(left == "0");
         assert(right == "0");
@@ -230,11 +236,11 @@ int main () {
 
         //Test
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         //Verify
         assert(left == "0");
         assert(right == "1");
-        assert(result == "1");
+        assert(result == "0");
 
     }
 	    {
@@ -247,11 +253,47 @@ int main () {
 
         //Test
         result = left * right;
-        
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
         //Verify
         assert(left == "75");
         assert(right == "100");
         assert(result == "7500");
+
+    }
+
+            {
+          
+          //-----------------------------------------------------
+      // Setup Fixture     
+        bigint left("2");
+        bigint right("2");
+        bigint result;
+
+        //Test
+	result = left * right;
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
+        //Verify
+        assert(left == "2");
+        assert(right == "2");
+        assert(result == "4");
+
+    }
+
+            {
+          
+          //-----------------------------------------------------
+      // Setup Fixture     
+        bigint left("9");
+        bigint right("1");
+        bigint result;
+
+        //Test
+	result = left * right;
+        std::cout <<  left << " * " << right << " == " << result << std::endl;
+        //Verify
+        assert(left == "9");
+        assert(right == "1");
+        assert(result == "9");
 
     }
 
