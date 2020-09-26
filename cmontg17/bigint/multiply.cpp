@@ -13,11 +13,27 @@ int main() {
         exit(1);
     }
     
-    //Until end of file
-       //Read two bigints
-       //Print them out
-       //Add them together
-       //Print out results
+            while (!in.eof()) {
+        
+
+                //Creates two bigints
+                bigint bi1;
+                bigint bi2;
+                bigint result;
+                //Takes in bigints
+                in >> bi1;
+
+                std::cout << "This is the bigint 1: " << bi1 << std::endl;
+
+
+                in >> bi2;
+
+                std::cout << "This is the bigint 2: " << bi2 << std::endl;
+
+                result = bi1 * bi1;
+
+                std::cout << "This is the result of multiplying bigint 1 and 2: " <<  result << std::endl;
+} 
  
     in.close();
     return 0;

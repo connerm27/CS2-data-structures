@@ -29,6 +29,12 @@ class bigint {
 
 	int operator[](int) const; //Operator
 
+	bigint times_digit(int) const;
+
+	bigint times_10(int n) const;
+
+	bigint operator*(const bigint&) const; 
+
   private:
 	int arr[CAPACITY];
 

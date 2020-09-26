@@ -56,7 +56,7 @@ void bigint::debugPrint(std::ostream& out) const {
 	for(int i=CAPACITY-1; i>=0; i--) {
 		out << arr[i] << "|";
 	}
-	
+
 	out << std::endl;
 }
 
@@ -189,6 +189,73 @@ int bigint::operator[](int index) const {
 
 }
 
+
+bigint bigint::times_digit(int val) const {
+
+bigint answer;
+
+int carry = 0;
+
+for(int i=0; i<CAPACITY; ++i) {
+	int mult = val * arr[i];
+
+	if(carry !=0) {
+		mult = mult + carry;
+		carry = 0;
+	}
+
+	if(mult >= 10) {
+		carry = mult/10;
+		mult = mult%10;
+	}
+
+	answer.arr[i] = mult;
+
+}
+
+return answer;
+
+}
+
+
+bigint bigint::times_10(int n) const {
+
+bigint finalAnswer;
+
+
+for(int i=0; i<CAPACITY; ++i) {
+
+	finalAnswer.arr[i+n] = arr[i];
+
+}
+
+
+return finalAnswer;
+
+
+}
+
+bigint bigint::operator*(const bigint& bi) const {
+
+
+bigint product;
+bigint temp;
+
+bigint A;
+
+for(int i=0; i<CAPACITY; ++i) {
+	A.arr[i] = arr[i];
+}
+
+for(int i=0; i<CAPACITY; ++i) {
+	temp = A.times_digit(bi.arr[i]);
+	product = product + temp.times_10(i);
+
+}
+
+return product;
+
+}
 
 
 
