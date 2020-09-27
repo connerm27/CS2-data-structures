@@ -35,6 +35,8 @@ class bigint {
 
 	bigint operator*(const bigint&) const; 
 
+	bigint factorial(int);
+
   private:
 	int arr[CAPACITY];
 
