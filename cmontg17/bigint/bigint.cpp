@@ -260,3 +260,49 @@ return product;
 
 
 
+bigint bigint::factorial(int n) {
+
+bigint factorial(n);
+int total = n;
+int counter = 0;
+//std::cout << factorial;
+
+
+//Figures out the factorial of the input
+for(int i=0; i<total-1; ++i) {
+	n = n-1;
+	bigint temp(n);
+	//std::cout << temp;
+	factorial = factorial * temp;
+//	std::cout << factorial;
+
+}
+
+
+for(int i=0; i<CAPACITY; ++i) {
+
+	if(factorial.arr[i] != 0) {
+		break;
+	}
+
+	counter++;
+
+}
+
+
+for(int i=0; i<CAPACITY; ++i) {
+
+	arr[i] = counter%10;
+	counter = counter/10;
+
+	if(counter == 0) {
+		break;
+	}
+}
+
+
+
+
+return *this;
+
+}
