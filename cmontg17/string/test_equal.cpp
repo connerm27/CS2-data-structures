@@ -47,7 +47,16 @@ assert(str == str2);
 
 }
 
+{
 
+String str("test");
+String str2("tests");
+
+std::cout << str << " != " << str2 << std::endl;
+
+assert(str != str2);
+
+}
 
 
 std::cout << "Done testing equal" << std::endl; 
