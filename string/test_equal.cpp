@@ -18,12 +18,12 @@ assert(str == str2);
 }
 
 {
-String str('a');
+char c = 'a';
 String str2('a');
 
-std::cout << str << " == " << str2 << std::endl;
+std::cout << c << " == " << str2 << std::endl;
 
-assert(str == str2);
+assert(c == str2);
 
 }
 
@@ -38,7 +38,7 @@ assert(str == str2);
 }
 
 {
-String str("test");
+char str[] = "test";
 String str2("test");
 
 std::cout << str << " == " << str2 << std::endl;
