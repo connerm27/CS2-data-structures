@@ -55,6 +55,7 @@ int String::length() const {
 	int i;
 
 	for (i=0; i < STRING_SIZE; ++i) {
+
 		if(str[i] == '\0') {
 			break;
 		}
@@ -67,19 +68,26 @@ int String::length() const {
 String String::operator+(const String& str2) const {
 
 String cStr;
-int len = length();
-int len2 = str2.length();
 
-for(int i=0; i < len; ++i) {
+int i = 0;
+
+while(str[i] != '\0') {
 
 	cStr.str[i] = str[i];
+	i++;
+
+}
+int len = length();
+int j = 0;
+
+while(str2.str[j] != '\0') {
+	cStr.str[len + j] = str2.str[j];
+	j++;
+
 }
 
-for(int i=len; i < len+len2; ++i) {
-	cStr.str[i] = str2.str[i];
-}
+cStr.str[len+j] = '\0';
 
-cStr[len + len2] = '\0';
 
 return cStr;
 
@@ -141,11 +149,11 @@ while(str2.str[i] != '\0') {
 	if(len + i >= capacity()) {
 		break;
 	}
+}
+
 	str[len+i] = '\0';
 
-	return *this;
 
-}
 
 return *this;
 
@@ -236,7 +244,11 @@ std::istream& operator>>(std::istream& in, String& s) {
 	char c;
 	int i=0;
 	while (!in.eof()) {
-		in >> c;
+		in.get(c);
+
+		if(c == ' ') {
+			break;
+		}
 		s.str[i] = c;
 		i++;
 	}

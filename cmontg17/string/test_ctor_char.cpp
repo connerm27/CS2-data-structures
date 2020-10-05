@@ -7,11 +7,11 @@
 
 int main() {
 
-
+std::cout << "Running 2 tests..." << std::endl;
 {
 
 String str('a');
-
+std::cout << str << std::endl;
 assert(str == "a");
 
 }
@@ -19,13 +19,12 @@ assert(str == "a");
 {
 
 String str(' ');
-
+std::cout << str << std::endl;
 assert(str == ' ');
 
 
 }
 
-std::cout << "Running 2 tests..." << std::endl;
 std::cout << "Done testing char constructor." << std::endl; 
 
 
