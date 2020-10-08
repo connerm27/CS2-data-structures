@@ -3,3 +3,42 @@ m1: 100
 m2: 90[regrade] -- still you r add program is not perfect. reads a pair of extra bigint 
 m3: 100
 bonus : 10
+
+
+p2
+m1:92
+
+notes
+a) capacity should be stringSize -1
+b) follwoing test cases failed
+
+1) s1 == ab
+s2 == abc
+s3 == ad
+s4 == d
+s5 == ab
+s6 == a
+s7 == 
+testM1_lessThan: testM1_lessThan.cpp:35: int main(): Assertion `s1 < s3' failed.
+
+2)  //------------------------------------------------------
+        // SETUP FIXTURE
+
+        // TEST
+        String  str;
+	
+	std::ifstream input("log_1_tiny.txt");
+	assert(input.is_open());
+	
+        // VERIFY
+	input >> str;
+        assert( str == "131.123.47.176" );
+	input >> str;
+	assert( str == "-" );
+	input >> str;
+	assert( str == "-" );
+	input >> str;
+	assert( str == "[18/Sep/2002:12:05:25" );
+	input >> str;
+	assert( str == "-0400]" );
+3) 
