@@ -46,7 +46,7 @@ char String::operator[](int index) const {
 
 int String::capacity() const {
 
-	return STRING_SIZE;
+	return STRING_SIZE-1;
 
 }
 
