@@ -72,7 +72,7 @@ string.o: string.hpp string.cpp
 #  the ones that you've named differently.
 #
 # For Milestone 2 add $(MYM2) to the end of the line below
-tests: $(MYCTOR) $(MYOPS) $(MYREL)
+tests: $(MYCTOR) $(MYOPS) $(MYREL) $(MYM2)
 	./test_default_ctor
 	./test_ctor_char 
 	./test_ctor_charArray
@@ -84,12 +84,12 @@ tests: $(MYCTOR) $(MYOPS) $(MYREL)
 	./test_input 
 	./test_find_char 
 	./test_find_string 
-	./test_substring
+	./test_substring 
 #Milestone 2
-#	./test_ctor_copy 
-#	./test_swap_assign 
-#	./test_ctor_int 
-#	./test_ctor_charArray_in
+	./test_ctor_copy 
+	./test_swap_assign 
+	./test_ctor_int 
+	./test_ctor_charArray_int
 
 
 ###############################################################
