@@ -2,30 +2,92 @@
 #include <iostream>
 
 String::String() {
-	//NULL array
+	stringSize = 1;
+	str = new char[1];
 	str[0] = '\0';
 
 }
 
 String::String(char c) {
 
-	//One character
+	stringSize = 2;
+	str = new char[2];
 	str[0] = c;
-	str[1] = '\0';
+	str[1] = '\0'; 
+
 
 }
 
 
 String::String(const char c_arr[]) {
 
+	int len = 0;
+	while(c_arr[len] != '\0') {
+		len++;
+	}
+
+	stringSize = len+1;
+	str = new char[stringSize];
 	int i;
-	for(i=0; i<STRING_SIZE; ++i) {
-		if(c_arr[i] == '\0') {
-			break;
-		}
+	for(i=0; i<stringSize; ++i) {
 		str[i] = c_arr[i];
 	}
 	str[i] = '\0';
+
+}
+
+String::String(const String& str2) {
+
+	int len = str2.length();
+	stringSize = len+1;
+	str = new char[stringSize];
+
+	int i;
+	for(i=0; i<stringSize; ++i) {
+		str[i] = str2.str[i];
+	}
+	str[i] = '\0';
+
+}
+
+String::~String() {
+
+	if(str != NULL) {
+		delete[] str;
+	}
+}
+
+void String::swap(String& str2) {
+
+	char *temp_str = str;
+	str = str2.str;
+	str2.str = temp_str;
+
+	int temp_len = stringSize;
+	stringSize = str2.stringSize;
+	str2.stringSize = temp_len;
+
+}
+
+String& String::operator=(String s) {
+
+	if(str != NULL) {
+                delete[] str;
+        }
+	str = NULL;
+
+	int len = s.length();
+	stringSize = len+1;
+
+	str = new char[stringSize];
+	int i;
+	for (i = 0; i < stringSize; ++i) {
+		str[i] = s.str[i];
+	}
+	str[i] = '\0';
+
+	return *this;
+
 
 }
 
@@ -46,7 +108,7 @@ char String::operator[](int index) const {
 
 int String::capacity() const {
 
-	return STRING_SIZE-1;
+	return stringSize - 1;
 
 }
 
@@ -54,9 +116,9 @@ int String::length() const {
 
 	int i;
 
-	for (i=0; i < STRING_SIZE; ++i) {
+	for (i=0; i < stringSize; ++i) {
 
-		if(str[i] == '\0') {
+		if(str[i] == '\0'){
 			break;
 		}
 	}
@@ -137,7 +199,7 @@ bool String::operator<(const String& str2) const {
 
 }
 
-String String::operator+= (const String& str2){
+String& String::operator+= (const String& str2){
 
 int len = length();
 int i = 0;
@@ -269,6 +331,49 @@ std::ostream& operator<<(std::ostream& out, const String& s) {
 
 	return out;
 }
+
+
+//Private Member Functions
+void String::resetCapacity(int x) {
+
+stringSize = x-1;
+
+char *ptr =  new char[stringSize];
+
+for(int i = 0; i < stringSize; ++i) {
+
+	str[i] = ptr[i];
+
+}
+
+delete[] ptr;
+
+
+}
+
+String::String(int x) {
+	stringSize = x-1;
+	str = new char[stringSize];
+	str[0] = '\0';
+
+}
+
+String::String(int x, const char c_arr[]) {
+
+	stringSize = x-1;
+	str = new char[stringSize];
+
+	int i;
+	for(i = 0; i < stringSize; ++i) {
+		str[i] = c_arr[i];
+	}
+	str[i] = '\0';
+
+}
+
+
+
+
 
 
 //Non member functions
