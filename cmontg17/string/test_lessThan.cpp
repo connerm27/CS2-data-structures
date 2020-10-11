@@ -71,11 +71,37 @@ String str2("Computer");
 bool result = str >= str2;
 std::cout << str << " >= " << str2 << " == " << result <<  std::endl << std::endl;
 assert(result);
+
 }
+
+
+
+{
+String str("ab");
+String str2("d");
+
+
+bool result = str < str2;
+std::cout << str << " < " << str2 << " == " << result <<  std::endl << std::endl;
+assert(result);
+}
+
+
+{
+String str("c");
+String str2("d");
+
+
+bool result = str < str2;
+std::cout << str << " < " << str2 << " == " << result <<  std::endl << std::endl;
+assert(result);
+}
+
 
 std::cout << "Done Testing Less Than." << std::endl;
 
 }
+
 
 
 

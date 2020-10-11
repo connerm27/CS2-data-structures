@@ -9,11 +9,34 @@ int main() {
 
 {
 String str("Hello");
+std::cout << str << std::endl;
 int result = str.capacity();
 
 std::cout << "Capcity == " << result << std::endl << std::endl;
 
-assert(result == 256);
+assert(result == 5);
+
+}
+
+{
+String str("Hi");
+std::cout << str << std::endl;
+int result = str.capacity();
+
+std::cout << "Capcity == " << result << std::endl << std::endl;
+
+assert(result == 2);
+
+}
+
+{
+String str("a");
+std::cout << str << std::endl;
+int result = str.capacity();
+
+std::cout << "Capcity == " << result << std::endl << std::endl;
+
+assert(result == 1);
 
 }
 
