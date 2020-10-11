@@ -77,10 +77,10 @@ tests: $(MYCTOR) $(MYOPS) $(MYREL) $(MYM2)
 	./test_ctor_char 
 	./test_ctor_charArray
 	./test_equal 
-	./test_lessThan 
+#	./test_lessThan 
 	./test_concat 
 	./test_subscript 
-	./test_len_cap
+#	./test_len_cap
 	./test_input 
 	./test_find_char 
 	./test_find_string 
@@ -112,8 +112,8 @@ oracle: $(CTOR) $(REL) $(COPY) $(OPS)
 	./testoracle_equal 
 	./testoracle_ctor_char 
 	./testoracle_ctor_charArray
-#	./testoracle_ctor_charArray_int 
-#	./testoracle_ctor_int
+	./testoracle_ctor_charArray_int 
+	./testoracle_ctor_int
 	./testoracle_ctor_copy 
 	./testoracle_assign
 	./testoracle_swap_assign

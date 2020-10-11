@@ -16,7 +16,8 @@ int main() {
 	while(!in.eof()) {
 
 		String str;
-		in >> str;
+		if(!in.eof())
+			in >> str;
 		std::cout << str << std::endl;
 	}
 
