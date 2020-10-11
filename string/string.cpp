@@ -8,7 +8,7 @@ String::String() {
 
 }
 
-String::String(char c) {
+String::String(char c):String() {
 
 	stringSize = 2;
 	str = new char[2];
@@ -19,7 +19,7 @@ String::String(char c) {
 }
 
 
-String::String(const char c_arr[]) {
+String::String(const char c_arr[]):String() {
 
 	int len = 0;
 	while(c_arr[len] != '\0') {
@@ -130,6 +130,9 @@ int String::length() const {
 String String::operator+(const String& str2) const {
 
 String cStr;
+int len = length();
+int len2 = str2.length();
+cStr.stringSize = len + len2 + 1;
 
 int i = 0;
 
@@ -139,7 +142,7 @@ while(str[i] != '\0') {
 	i++;
 
 }
-int len = length();
+
 int j = 0;
 
 while(str2.str[j] != '\0') {
@@ -183,17 +186,28 @@ bool String::operator<(const String& str2) const {
 	int len1 = length();
 	int len2 = str2.length();
 
-	if (len1 >= len2) {
-		return false;
+	int s = len1;
+
+	if(len2 < len1) {
+		s = len2;
 	}
 
-	for(int i= 0; i <= len2 - len1; ++i) {
+	for(int i=0; i<s; ++i) {
+		if(str[i] == str2.str[i]) {
+			continue;
+		}
 
-		if(substr(i, i+len1-1) ==  (*this))
+		if(str[i] < str2.str[i]) {
 			return true;
+		}
 	}
 
-	return false; 
+
+	if (str == str2.substr(0, len1-1) && len1 < len2) {
+		return true;
+	}
+
+	return false;
 
 
 
@@ -202,6 +216,10 @@ bool String::operator<(const String& str2) const {
 String& String::operator+= (const String& str2){
 
 int len = length();
+int len2 = str2.length();
+
+stringSize = len + len2 +1;
+
 int i = 0;
 
 while(str2.str[i] != '\0') {
@@ -238,6 +256,7 @@ String String::substr(int start, int end) const {
 	}
 
 	String rlt;
+	rlt.stringSize = (end-start)+2;
 	int i;
 	for(i=start; i<=end; ++i) {
 		rlt.str[i-start] = str[i];
@@ -303,19 +322,12 @@ int String::findstr(int pos, const String& str2) const {
 
 std::istream& operator>>(std::istream& in, String& s) {
 
-	char c;
-	int i=0;
-	while (!in.eof()) {
-		in.get(c);
-
-		if(c == ' ') {
-			break;
-		}
-		s.str[i] = c;
-		i++;
+	char c[s.stringSize];
+	if(!in.eof()) {
+		in >> c;
+		s.stringSize++;
+		s = String(c);
 	}
-
-	s.str[i] = '\0';
 
 	return in;
 
@@ -352,7 +364,7 @@ delete[] ptr;
 }
 
 String::String(int x) {
-	stringSize = x-1;
+	stringSize = x+1;
 	str = new char[stringSize];
 	str[0] = '\0';
 
@@ -360,7 +372,7 @@ String::String(int x) {
 
 String::String(int x, const char c_arr[]) {
 
-	stringSize = x-1;
+	stringSize = x+1;
 	str = new char[stringSize];
 
 	int i;
