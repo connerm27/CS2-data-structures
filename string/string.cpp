@@ -8,7 +8,7 @@ String::String() {
 
 }
 
-String::String(char c):String() {
+String::String(char c) {
 
 	stringSize = 2;
 	str = new char[2];
@@ -19,7 +19,7 @@ String::String(char c):String() {
 }
 
 
-String::String(const char c_arr[]):String() {
+String::String(const char c_arr[]) {
 
 	int len = 0;
 	while(c_arr[len] != '\0') {

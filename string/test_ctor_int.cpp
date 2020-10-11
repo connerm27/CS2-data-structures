@@ -4,9 +4,7 @@
 
 int main() {
 
-
-
-
+std::cout << "Done testing constructor int. (Private Constructor)" << std::endl;
 
 }
 
