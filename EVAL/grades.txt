@@ -41,4 +41,4 @@ testM1_lessThan: testM1_lessThan.cpp:35: int main(): Assertion `s1 < s3' failed.
 	assert( str == "[18/Sep/2002:12:05:25" );
 	input >> str;
 	assert( str == "-0400]" );
-3) 
+m2: 100
