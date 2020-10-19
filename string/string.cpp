@@ -1,5 +1,6 @@
 #include "string.hpp"
 #include <iostream>
+#include <cassert>
 
 String::String() {
 	stringSize = 1;
@@ -38,23 +39,22 @@ String::String(const char c_arr[]) {
 
 String::String(const String& str2) {
 
-	int len = str2.length();
-	stringSize = len+1;
+	stringSize = str2.stringSize;
 	str = new char[stringSize];
 
 	int i;
 	for(i=0; i<stringSize; ++i) {
 		str[i] = str2.str[i];
 	}
-	str[i] = '\0';
+	str[stringSize-1] = '\0';
 
 }
 
 String::~String() {
 
-	if(str != NULL) {
-		delete[] str;
-	}
+
+	delete[] str;
+
 }
 
 void String::swap(String& str2) {
@@ -67,24 +67,12 @@ void String::swap(String& str2) {
 	stringSize = str2.stringSize;
 	str2.stringSize = temp_len;
 
+
 }
 
 String& String::operator=(String s) {
 
-	if(str != NULL) {
-                delete[] str;
-        }
-	str = NULL;
-
-	int len = s.length();
-	stringSize = len+1;
-
-	str = new char[stringSize];
-	int i;
-	for (i = 0; i < stringSize; ++i) {
-		str[i] = s.str[i];
-	}
-	str[i] = '\0';
+	swap(s);
 
 	return *this;
 
@@ -93,14 +81,14 @@ String& String::operator=(String s) {
 
 char& String::operator[](int index) {
 
-	if(index>=0 && index<length()) 
+	assert(index>=0 && index<length()); 
 		return str[index];
 
 }
 
 char String::operator[](int index) const {
 
-	if(index>=0 && index<length())
+	assert(index>=0 && index<length());
 		return str[index];
 
 }
@@ -252,11 +240,10 @@ String String::substr(int start, int end) const {
 		return String();
 	}
 	if(end >= length()) {
-		end = length() - 1;
+		end = length(); //had -1
 	}
 
-	String rlt;
-	rlt.stringSize = (end-start)+2;
+	String rlt((end-start)+1);
 	int i;
 	for(i=start; i<=end; ++i) {
 		rlt.str[i-start] = str[i];
@@ -274,7 +261,7 @@ int String::findch(int pos, char ch) const {
 		pos = 0;
 	}
 	if(pos > length()-1) {
-		return -1;
+		pos = length();
 	}
 
 	int i;
@@ -285,7 +272,7 @@ int String::findch(int pos, char ch) const {
 		}
 	}
 
-	return -1; 
+	return -1;
 
 
 }
@@ -345,21 +332,85 @@ std::ostream& operator<<(std::ostream& out, const String& s) {
 }
 
 
+std::vector<String> String::split(char c) const {
+
+std::vector<String> v1;
+
+std::cout << "|" << str << "|" << c << "|" <<  std::endl;
+
+int saved = 0;
+int x = 0;
+int count = 0;
+
+for(int i=0; i<stringSize; ++i) {
+
+	if(str[i] == c){
+		count++;
+	}
+}
+
+std::cout << "This is the count: " <<  count << std::endl;
+
+if(count == 0) {
+	std::cout << "The character was not found in the string, returns the string" << std::endl;
+	v1.push_back(substr(0, length()-1));
+	return v1;
+
+}
+
+//String temp;
+//String last;
+for(int i = 0; i<count; ++i) {
+	x = findch(saved, c);
+	std::cout << "This is the value of x: " << x <<  std::endl;
+//	String temp;
+//	temp =  substr(saved, x-1);
+//	std::cout << "This is the value of temp: " << temp <<  std::endl;
+	v1.push_back(substr(saved, x-1));
+	saved = x+1;
+	std::cout << "This is the value of saved var: " << saved << std::endl;
+
+	if(count-1 == i) {
+		std::cout << "This should be the last loop through" << std::endl;
+	//	String last;
+		//last  = substr(saved, stringSize-1);
+	//	std::cout << "This is the value of last: " << last << std::endl;
+		v1.push_back(substr(saved, stringSize-1));
+	}
+}
+
+
+//This is for testing purposes
+for(int i =0; i<v1.size(); ++i) {
+	std::cout << v1.at(i) << std::endl;
+}
+std::cout << "---------------" <<  std::endl << std::endl;
+
+
+return v1;
+
+}
+
+
 //Private Member Functions
 void String::resetCapacity(int x) {
 
 stringSize = x-1;
 
 char *ptr =  new char[stringSize];
+int i;
+for(i = 0; i < stringSize; ++i) {
 
-for(int i = 0; i < stringSize; ++i) {
-
-	str[i] = ptr[i];
+	ptr[i] = str[i];
 
 }
 
-delete[] ptr;
+ptr[i] = '\0';
 
+delete[] str;
+
+str = ptr;
+//delete[] ptr;
 
 }
 
