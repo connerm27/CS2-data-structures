@@ -363,19 +363,17 @@ if(count == 0) {
 for(int i = 0; i<count; ++i) {
 	x = findch(saved, c);
 	std::cout << "This is the value of x: " << x <<  std::endl;
-//	String temp;
-//	temp =  substr(saved, x-1);
-//	std::cout << "This is the value of temp: " << temp <<  std::endl;
-	v1.push_back(substr(saved, x-1));
+	String temp(substr(saved, x-1));
+	std::cout << "This is the value of temp: " << temp <<  std::endl;
+	v1.push_back(temp);
 	saved = x+1;
 	std::cout << "This is the value of saved var: " << saved << std::endl;
 
 	if(count-1 == i) {
 		std::cout << "This should be the last loop through" << std::endl;
-	//	String last;
-		//last  = substr(saved, stringSize-1);
-	//	std::cout << "This is the value of last: " << last << std::endl;
-		v1.push_back(substr(saved, stringSize-1));
+		String last(substr(saved, stringSize-1));
+		std::cout << "This is the value of last: " << last << std::endl;
+		v1.push_back(last);
 	}
 }
 

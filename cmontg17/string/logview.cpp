@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 
     // We're done with the file
     in.close();
-
+	std::cout << "read the file" << std::endl;
     // Handle the specified option
     String option(argv[1]);
     if (option == opt[0]) {
