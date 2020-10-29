@@ -42,3 +42,5 @@ testM1_lessThan: testM1_lessThan.cpp:35: int main(): Assertion `s1 < s3' failed.
 	input >> str;
 	assert( str == "-0400]" );
 m2: 100
+m3: pending
+m4: pending
