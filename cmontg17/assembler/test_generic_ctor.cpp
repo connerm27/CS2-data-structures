@@ -15,10 +15,11 @@ int main ()
         // SETUP FIXTURE
 
         // TEST
+	// Create test for string, character, etc...
         stack<int>  x;
 
         // VERIFY
-        assert(false);
+        assert(x.top()== null);
     }
 
 
