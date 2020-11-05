@@ -44,3 +44,7 @@ testM1_lessThan: testM1_lessThan.cpp:35: int main(): Assertion `s1 < s3' failed.
 m2: 100
 m3: pending
 m4: pending
+
+
+p3
+m1: 100
