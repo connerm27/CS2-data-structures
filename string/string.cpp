@@ -70,11 +70,20 @@ void String::swap(String& str2) {
 
 }
 
-String& String::operator=(String s) {
+String& String::operator=(String rhs) {
+if (str == rhs.str) return *this; //check to see if they are already pointing to the same address
 
-	swap(s);
+delete [] str;
 
-	return *this;
+stringSize = rhs.stringSize;
+
+str = new char [stringSize];
+
+for (int i = 0; i < capacity(); ++i)
+
+str[i] = rhs.str[i];
+
+return *this;
 
 
 }
@@ -115,35 +124,33 @@ int String::length() const {
 
 }
 
-String String::operator+(const String& str2) const {
+String String::operator+(const String& rhs) const {
 
-String cStr;
-int len = length();
-int len2 = str2.length();
-cStr.stringSize = len + len2 + 1;
+char *c = new char[length() + rhs.stringSize];
 
 int i = 0;
 
-while(str[i] != '\0') {
+while(str[i] != 0) {
 
-	cStr.str[i] = str[i];
-	i++;
+c[i] = str[i];
+
+++i;
 
 }
 
 int j = 0;
 
-while(str2.str[j] != '\0') {
-	cStr.str[len + j] = str2.str[j];
-	j++;
+while(rhs.str[j] != 0) {
+
+c[i++] = rhs.str[j++];
 
 }
 
-cStr.str[len+j] = '\0';
+c[i] = '\0';
 
+String *k = new String(c);
 
-return cStr;
-
+return *k ;
 
 }
 
@@ -203,25 +210,7 @@ bool String::operator<(const String& str2) const {
 
 String& String::operator+= (const String& str2){
 
-int len = length();
-int len2 = str2.length();
-
-stringSize = len + len2 +1;
-
-int i = 0;
-
-while(str2.str[i] != '\0') {
-
-	str[len + i] = str2.str[i];
-	i++;
-	if(len + i >= capacity()) {
-		break;
-	}
-}
-
-	str[len+i] = '\0';
-
-
+*this = operator+(str2);
 
 return *this;
 
@@ -230,27 +219,29 @@ return *this;
 
 String String::substr(int start, int end) const {
 
-	if(start < 0) {
-		start = 0;
-	}
-	if(start>length()) {
-		return String();
-	}
-	if(start > end) {
-		return String();
-	}
-	if(end >= length()) {
-		end = length(); //had -1
-	}
+if (start < 0) return String();
 
-	String rlt((end-start)+1);
-	int i;
-	for(i=start; i<=end; ++i) {
-		rlt.str[i-start] = str[i];
-	}
-	rlt.str[i-start] = '\0';
+if (start > end) return String();
 
-	return rlt;
+if (end >= length()) {
+	end = length();
+}
+
+String result;
+
+int i = start;
+
+while (i <= end) {
+
+result += str[i];
+
+++i;
+
+}
+
+String *k = new String(result);
+
+return *k;
 
 
 }
@@ -333,7 +324,6 @@ std::ostream& operator<<(std::ostream& out, const String& s) {
 
 
 std::vector<String> String::split(char c) const {
-
 std::vector<String> v1;
 
 std::cout << "|" << str << "|" << c << "|" <<  std::endl;
@@ -386,7 +376,6 @@ std::cout << "---------------" <<  std::endl << std::endl;
 
 
 return v1;
-
 }
 
 
