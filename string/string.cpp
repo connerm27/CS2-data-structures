@@ -71,17 +71,19 @@ void String::swap(String& str2) {
 }
 
 String& String::operator=(String rhs) {
-if (str == rhs.str) return *this; //check to see if they are already pointing to the same address
+//if (str == rhs.str) return *this; //check to see if they are already pointing to the same address
 
-delete [] str;
+//delete [] str;
 
-stringSize = rhs.stringSize;
+//stringSize = rhs.stringSize;
 
-str = new char [stringSize];
+//str = new char [stringSize];
 
-for (int i = 0; i < capacity(); ++i)
+//for (int i = 0; i < capacity(); ++i)
 
-str[i] = rhs.str[i];
+//str[i] = rhs.str[i];
+
+swap(rhs);
 
 return *this;
 
@@ -326,7 +328,7 @@ std::ostream& operator<<(std::ostream& out, const String& s) {
 std::vector<String> String::split(char c) const {
 std::vector<String> v1;
 
-std::cout << "|" << str << "|" << c << "|" <<  std::endl;
+//std::cout << "|" << str << "|" << c << "|" <<  std::endl;
 
 int saved = 0;
 int x = 0;
@@ -339,10 +341,10 @@ for(int i=0; i<stringSize; ++i) {
 	}
 }
 
-std::cout << "This is the count: " <<  count << std::endl;
+//std::cout << "This is the count: " <<  count << std::endl;
 
 if(count == 0) {
-	std::cout << "The character was not found in the string, returns the string" << std::endl;
+//	std::cout << "The character was not found in the string, returns the string" << std::endl;
 	v1.push_back(substr(0, length()-1));
 	return v1;
 
@@ -352,27 +354,27 @@ if(count == 0) {
 //String last;
 for(int i = 0; i<count; ++i) {
 	x = findch(saved, c);
-	std::cout << "This is the value of x: " << x <<  std::endl;
+//	std::cout << "This is the value of x: " << x <<  std::endl;
 	String temp(substr(saved, x-1));
-	std::cout << "This is the value of temp: " << temp <<  std::endl;
+//	std::cout << "This is the value of temp: " << temp <<  std::endl;
 	v1.push_back(temp);
 	saved = x+1;
-	std::cout << "This is the value of saved var: " << saved << std::endl;
+//	std::cout << "This is the value of saved var: " << saved << std::endl;
 
 	if(count-1 == i) {
-		std::cout << "This should be the last loop through" << std::endl;
+//		std::cout << "This should be the last loop through" << std::endl;
 		String last(substr(saved, stringSize-1));
-		std::cout << "This is the value of last: " << last << std::endl;
+//		std::cout << "This is the value of last: " << last << std::endl;
 		v1.push_back(last);
 	}
 }
 
 
 //This is for testing purposes
-for(int i =0; i<v1.size(); ++i) {
-	std::cout << v1.at(i) << std::endl;
-}
-std::cout << "---------------" <<  std::endl << std::endl;
+//for(int i =0; i<v1.size(); ++i) {
+//	std::cout << v1.at(i) << std::endl;
+//}
+//std::cout << "---------------" <<  std::endl << std::endl;
 
 
 return v1;
