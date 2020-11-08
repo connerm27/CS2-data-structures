@@ -39,11 +39,8 @@ if(argc < 3) {
 			rlt = infix_to_postfix(s);
 			std::cout << "Postfix: " << rlt << std::endl << std::endl;
 
-		//	String result;
+		//	Empty the string;
 			s = "";
-		//	std::cout << "This is empty s " << s << std::endl;
-		//	result = infix_to_postfix(s);
-			//Print result before to show infix then after to show postfix
 		}
 
 	}
@@ -73,22 +70,15 @@ if(argc < 3) {
                 } else {
                         s+= ';';
 			out << s;
-                       // std::cout << "Infix: "  << s << std::endl;
                         String rlt;
                         rlt = infix_to_postfix(s);
 			out << rlt;
-			 // std::cout << "Postfix: " << rlt << std::endl << std::endl;
 
-                //      String result;
                         s = "";
-                //      std::cout << "This is empty s " << s << std::endl;
-                //      result = infix_to_postfix(s);
-                        //Print result before to show infix then after to show postfix
-                } 
+                }
 
         }
 
-	//Make the same  loop as in argc < 3, however this time instead of std::cout << , we do out << result to out put to the file 
 
 }
 
