@@ -69,10 +69,9 @@ if(argc < 3) {
 
                 } else {
                         s+= ';';
-			out << s;
                         String rlt;
                         rlt = infix_to_postfix(s);
-			out << rlt;
+			out << rlt << "\n";
 
                         s = "";
                 }
@@ -81,5 +80,8 @@ if(argc < 3) {
 
 
 }
+
+
+
 
 }
