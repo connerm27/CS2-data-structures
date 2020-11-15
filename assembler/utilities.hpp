@@ -4,9 +4,11 @@
 #include "string.hpp"
 #include <iostream>
 
-String infix_to_postfix(String);
+String infix_to_postfix(std::vector<String>);
 
+String evaluate( String s, std::ostream& );
 
+String evaluate(String left, String t, String right, int c, std::ostream&);
 
 
 
