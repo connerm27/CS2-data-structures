@@ -3,85 +3,88 @@
 #include <fstream>
 #include <iostream>
 
+
 int main(int argc, char *argv[]) {
 
-if(argc < 1) {
-        std::cout << "Could not find file" << std::endl;
-	return 0;
-}
 
-	std::ifstream in (argv[1]);
-
-if(!in) {
-	std::cout << "File could not be found!" << std::endl;
-	return 0;
-}
-
-if(argc < 3) {
-	char c;
-	String s;
-	while(!in.eof()) {
-		in.get(c);
-		//std::cout << "This is c: " << c <<  std::endl;
-		if(in.eof()) {
-
-			break;
-		}
-
-		if(c != ';') {
-			s += c;
-		//	std::cout << s << std::endl;
-
-		} else {
-			s+= ';';
-			std::cout << "Infix: "  << s << std::endl;
-			String rlt;
-			rlt = infix_to_postfix(s);
-			std::cout << "Postfix: " << rlt << std::endl << std::endl;
-
-		//	Empty the string;
-			s = "";
-		}
-
-	}
-
-} else {
-
-	std::ofstream out (argv[2]);
-	if(!out) {
-		std::cout << "File could not be found!" << std::endl;
+	if(argc < 1) {
+        	std::cout << "Could not find file" << std::endl;
 		return 0;
 	}
 
-	char c;
-        String s;
-        while(!in.eof()) {
-                in.get(c);
-                //std::cout << "This is c: " << c <<  std::endl;
-                if(in.eof()) {
 
+	std::ifstream in (argv [1]);
+	if ( !in.is_open()) {
+		std::cout << "Could not open file\n";
+		return 1;
+	}
+
+	std::ofstream out (argv [2]);
+
+
+std::vector<String> v1;
+String s;
+while(in>>s) {
+
+	if(argc == 2) {
+		if(in.eof()) {
+			break;
+		}
+
+
+		if(s != ";") {
+			v1.push_back(s);
+		//	std::cout << "Made it in end of line if" << std::endl;
+		} else {
+		//	std::cout << "made it to else" << std::endl;
+			String semi(";");
+			v1.push_back(semi);
+			std::cout << "Infix: ";
+			for(int i=0; i < v1.size(); ++i) {
+				std::cout << v1.at(i) << " ";
+			}
+			std::cout << "\n";
+
+			String rlt = infix_to_postfix(v1);
+			std::cout << "Postfix: " <<  rlt << std::endl << std::endl;
+			v1.clear();
+		}
+
+	}
+
+	if(argc == 3) {
+		 if(in.eof()) {
                         break;
                 }
 
-                if(c != ';') {
-                    	s += c;
-                //      std::cout << s << std::endl;
 
+                if(s != ";") {
+                        v1.push_back(s);
+                //      std::cout << "Made it in end of line if" << std::endl;
                 } else {
-                        s+= ';';
-                        String rlt;
-                        rlt = infix_to_postfix(s);
-			out << rlt << "\n";
+                //      std::cout << "made it to else" << std::endl;
+                        String semi(";");
+                        v1.push_back(semi);
+                       // std::cout << "Infix: ";
+                       // for(int i=0; i < v1.size(); ++i) {
+                         //       std::cout << v1.at(i) << " ";
+                       // }
+                       // std::cout << "\n";
 
-                        s = "";
+                        String rlt = infix_to_postfix(v1);
+                        out << rlt << "\n";
+                        v1.clear();
                 }
+	}
+}
 
-        }
-
+in.close();
+return 0;
 
 }
 
 
 
 
-}
+
+
