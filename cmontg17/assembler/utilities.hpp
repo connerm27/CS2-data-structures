@@ -10,6 +10,10 @@ String evaluate( String s, std::ostream& );
 
 String evaluate(String left, String t, String right, int c, std::ostream&);
 
+String infix_to_prefix(std::vector<String>);
 
+String evaluate_prefix( String s, std::ostream& );
+
+String evaluate_prefix(String left, String t, String right, int c, std::ostream&);
 
 #endif
