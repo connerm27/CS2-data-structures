@@ -56,11 +56,11 @@ while(in>>s) {  if(argc == 2) {
                         evaluate(rlt, std::cout);
                         std::cout << "\n";
 
-                        //out << "Prefix: ";
-                        //String prefix = infix_to_prefix(v1);
-                        //out << prefix << "\n\n";
-                        //evaluate_prefix(prefix, out);
-                        //out << "\n";
+                        std::cout << "Prefix: ";
+                        String prefix = infix_to_prefix(v1);
+                        std::cout << prefix << "\n\n";
+                        evaluate(rlt, std::cout);
+                        std::cout << "\n";
 
                          v1.clear();
                 }
@@ -92,11 +92,11 @@ while(in>>s) {  if(argc == 2) {
 			evaluate(rlt, out);
 			out << "\n";
 
-			//out << "Prefix: ";
-			//String prefix = infix_to_prefix(v1);
-			//out << prefix << "\n\n";
-			//evaluate_prefix(prefix, out);
-			//out << "\n";
+			out << "Prefix: ";
+			String prefix = infix_to_prefix(v1);
+			out << prefix << "\n\n";
+			evaluate(rlt, out);
+			out << "\n";
 
 			 v1.clear();
                 }
