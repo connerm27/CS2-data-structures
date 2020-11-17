@@ -1,0 +1,15 @@
+Infix: ( AX + ( B * C ) ) ; 
+Prefix: + AX * B C ;
+
+Infix: ( ( AX + ( B * CY ) ) / ( D - E ) ) ; 
+Prefix: / + AX * B CY - D E ;
+
+Infix: ( ( A + B ) * ( C + E ) ) ; 
+Prefix: * + A B + C E ;
+
+Infix: ( AX * ( BX * ( ( ( CY + AY ) + BY ) * CX ) ) ) ; 
+Prefix: * AX * BX * + + CY AY BY CX ;
+
+Infix: ( ( H * ( ( ( ( A + ( ( B + C ) * D ) ) * F ) * G ) * E ) ) + J ) ; 
+Prefix: + * H * * * + A * + B C D F G E J ;
+
