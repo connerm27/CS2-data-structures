@@ -50,3 +50,6 @@ p3
 m1: 100
 m2: 90 note: there should be space between 2 tokens in postfix expression. Your postfix program doesn't write output to file
 m3 : 95 -- your assembler program not comverts all expressions. Programs stops abruptly
+
+p4
+m1: 100
