@@ -8,6 +8,11 @@
 //
 #include <iostream>
 
+#include "profile.hpp;"
+profile simple_cpp(simple.cpp);
+
+profile foo_cpp(foo.cpp);
+
 int search(int tbl[], int n, int key) {
     int result = -1;
     for (int i = 0; i < n; ++i) {
