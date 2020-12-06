@@ -135,16 +135,6 @@ AST::~AST() {
     //NEED TO IMPLEMENT
     //Recursively traverse tree and delete from bottom up
 
-//	std::cout << "Destructor has been called" << std::endl;
-//	while(!child.empty()) {
-	//	if(child.front()->child.empty()) {
-	//		child.pop_front();
-	//	} else {
-	//		child.front()->~AST();
-	//	}
-
-	//}
-
 
 	for(auto it = child.begin(); it != child.end(); it++) {
 		delete *it;
@@ -262,6 +252,32 @@ void AST::mainHeader(const std::vector<std::string>& profileName) {
     //Add #include "profile.hpp"
     //For each file profile name, add a new node with a profile 
     //   declaration "profile foo_cpp("foo.cpp");"
+
+
+	//IN ASTREE, iterate through tree
+	for( auto it = child.begin(); it != child.end(); it++) {
+		//Finds space before the first function which is main()
+		if((*it)->tag == "function") {
+			child.insert(it, new AST(token, "#include \"profile.hpp;\"\n"));
+
+		std::string result;
+		int indexOf;
+		std::string inserted;
+		for(auto it2 = profileName.begin(); it2 != profileName.end(); it2++) {
+			indexOf = (*it2).find_last_of('_');
+			result = (*it2).substr(0,indexOf);
+			result += ".cpp";
+			inserted = "profile " + (*it2) + "(" + result + ");\n\n";
+			child.insert(it, new AST(token, inserted));
+		}
+		break;
+		}
+
+	}
+
+
+
+
 }
 
 
@@ -274,6 +290,14 @@ void AST::fileHeader(const std::string& profileName) {
     //Skip down a couple lines or find first function and put it before that.
     //Add #include "profile.hpp"
     //Add in the external declaration for that file "extern profile foo_cpp;"
+
+	for( auto it = child.begin(); it != child.end(); it++) {
+		if((*it)->tag == "function") {
+			child.insert(it, new AST(token, "#include \"profile.hpp\";\n"));
+			child.insert(it, new AST(token, "extern " + profileName + ";\n"));
+			return;
+		}
+	}
 
 
 }
@@ -309,6 +333,9 @@ void AST::funcCount(const std::string& profileName) {
     //        Find the function name (use AST::getName())
     //        Find block and insert count as first line in block
     //
+
+
+
 
 }
 

@@ -29,7 +29,7 @@ public:
            profile (std::string fn="") : fname(fn)         {};
     void   count   (int line, const std::string& funcName) { stmt[intToString(line) + " " + funcName] += 1; }
     void   count   (int line)                              { stmt[intToString(line)] += 1; }
-    
+
     friend std::ostream& operator<< (std::ostream&, const profile&);
 private:
     std::string                 fname;   // File name.

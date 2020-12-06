@@ -66,9 +66,10 @@ int main(int argc, char *argv[]) {
 
 
    //TESTING COPY CTOR
-    testCopyAssign(code);
+//    testCopyAssign(code);
 
     code.mainHeader(profileName);             //Add in main header info
+	testCopyAssign(code);
     code.mainReport(profileName);             //Add in the report
     code.funcCount(profileName[0]);           //Count funciton invocations
     code.lineCount(profileName[0]);           //Count line invocations
