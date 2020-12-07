@@ -258,7 +258,7 @@ void AST::mainHeader(const std::vector<std::string>& profileName) {
 	for( auto it = child.begin(); it != child.end(); it++) {
 		//Finds space before the first function which is main()
 		if((*it)->tag == "function") {
-			child.insert(it, new AST(token, "#include \"profile.hpp;\"\n"));
+			child.insert(it, new AST(token, "#include \"profile.hpp\";\n"));
 
 		std::string result;
 		int indexOf;
@@ -267,7 +267,7 @@ void AST::mainHeader(const std::vector<std::string>& profileName) {
 			indexOf = (*it2).find_last_of('_');
 			result = (*it2).substr(0,indexOf);
 			result += ".cpp";
-			inserted = "profile " + (*it2) + "(" + result + ");\n\n";
+			inserted = "profile " + (*it2) + "(\"" + result + "\");\n\n";
 			child.insert(it, new AST(token, inserted));
 		}
 		break;
@@ -294,7 +294,7 @@ void AST::fileHeader(const std::string& profileName) {
 	for( auto it = child.begin(); it != child.end(); it++) {
 		if((*it)->tag == "function") {
 			child.insert(it, new AST(token, "#include \"profile.hpp\";\n"));
-			child.insert(it, new AST(token, "extern " + profileName + ";\n"));
+			child.insert(it, new AST(token, "extern profile " + profileName + ";\n"));
 			return;
 		}
 	}
