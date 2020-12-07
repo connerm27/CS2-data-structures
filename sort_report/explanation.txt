@@ -1,0 +1,4 @@
+I noticed that the functions that have the most calls (significantly more calls) take the longest.  The function that took the most time was the std::vector operator[] (the subscript operator function).
+I think this function is a bottle neck because it is often used in loops and therefore gets ran many times.  Normally when writing a loop you would have an iterator and the iterator would go into the
+subscript operator each time the loop is ran.  Other functions that took a long time include the less_than() function and the .size() function, these also make sense because taking the size of
+ a given vector is very common in programming and also the comparison less than would be used very often.  
