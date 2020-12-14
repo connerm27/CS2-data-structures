@@ -69,11 +69,12 @@ int main(int argc, char *argv[]) {
 //    testCopyAssign(code);
 
     code.mainHeader(profileName);             //Add in main header info
-	testCopyAssign(code);
+//	testCopyAssign(code);
     code.mainReport(profileName);             //Add in the report
+//    testCopyAssign(code);
     code.funcCount(profileName[0]);           //Count funciton invocations
     code.lineCount(profileName[0]);           //Count line invocations
-    
+   testCopyAssign(code);  
     std::string outFileName = "p-" + file[0];
     outFileName = outFileName.substr(0, outFileName.find(".xml"));
     std::ofstream outFile(outFileName.c_str());

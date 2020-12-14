@@ -28,43 +28,48 @@ void output_usage_and_exit(const string& cmd);
 void output_error_and_exit(const string& msg);
 
 //==============================================================================
+#include "profile.hpp";
+profile sort_cpp("sort.cpp");
+
 int main(int argc, char* argv[])
-{
+{ sort_cpp.count(__LINE__, __func__);
     // Options container
     Options opts;
 
     // Get values from the command line, opts may be changed
-    process_command_line(opts, argc, argv);
+    process_command_line(opts, argc, argv); sort_cpp.count(__LINE__);
 
     // Generate data
     vector<int> data;
-    generate_random_data(data, opts._data_size, opts._seed, opts._mod);
+    generate_random_data(data, opts._data_size, opts._seed, opts._mod); sort_cpp.count(__LINE__);
 
     // Output data before sorting
     if(opts._output_data)
-        { cout << "\nData Before: "; output_data(data); } 
+        { cout << "\nData Before: "; sort_cpp.count(__LINE__); output_data(data); sort_cpp.count(__LINE__); } 
 
     // Sort, if a sort was specified, there is no default
-    if (opts._quick_sort)     { quick_sort(data);      }
-    if (opts._selection_sort) { selection_sort(data);  }
-    if (opts._bubble_sort)    { bubble_sort(data);     }
+    if (opts._quick_sort)     { quick_sort(data); sort_cpp.count(__LINE__);      }
+    if (opts._selection_sort) { selection_sort(data); sort_cpp.count(__LINE__);  }
+    if (opts._bubble_sort)    { bubble_sort(data); sort_cpp.count(__LINE__);     }
     if ( !opts._quick_sort      &&
          !opts._selection_sort  &&
          !opts._bubble_sort  )
-        { output_error_and_exit("No sort specified."); }
+        { output_error_and_exit("No sort specified."); sort_cpp.count(__LINE__); }
 
     // Output data after sorting
     if(opts._output_sorted_data)
-        { cout << "\nData After: "; output_data(data); } 
+        { cout << "\nData After: "; sort_cpp.count(__LINE__); output_data(data); sort_cpp.count(__LINE__); } 
 
-    return 0;
+    
+std::cout << sort_cpp << std::endl;
+return 0;
 }
 
 //==============================================================================
 void generate_random_data(vector<int>& vec, int size, int seed, int mod)
-{
+{ sort_cpp.count(__LINE__, __func__);
     // Resize vector
-    vec.resize(size);
+    vec.resize(size); sort_cpp.count(__LINE__);
 
     // Set random number generator seed
     srandom(static_cast<unsigned int>(seed));
@@ -72,14 +77,14 @@ void generate_random_data(vector<int>& vec, int size, int seed, int mod)
     // Put random values in vector
     for (vector<int>::size_type idx = 0; idx < vec.size(); ++idx)
     {
-        if(mod) { vec[idx] = random() % mod; }
+        if(mod) { vec[idx] = random() % mod; sort_cpp.count(__LINE__); }
         else    { vec[idx] = random();       }
     }
 }
 
 //==============================================================================
 void output_data(const vector<int>& vec)
-{
+{ sort_cpp.count(__LINE__, __func__);
     // Number of columns, column width
     const int cols  =  7;
     const int width = 10;
@@ -89,12 +94,12 @@ void output_data(const vector<int>& vec)
     {
         // Output newline to end row
         if ( ! (idx % cols) )
-           { cout  << "\n"; }
+           { cout  << "\n"; sort_cpp.count(__LINE__); }
 
-        cout << std::setw(width) << vec[idx] << " ";
+        cout << std::setw(width) << vec[idx] << " "; sort_cpp.count(__LINE__);
     }
 
-    cout << '\n';
+    cout << '\n'; sort_cpp.count(__LINE__);
 }
 
 //==============================================================================
@@ -102,10 +107,10 @@ void output_data(const vector<int>& vec)
 //   * No check for C-string to int conversion success
 //
 void process_command_line(Options& opts, int argc, char* argv[])
-{
+{ sort_cpp.count(__LINE__, __func__);
     // Useage message if no command line args
     if (argc == 1)
-        { output_usage_and_exit(argv[0]); }
+        { output_usage_and_exit(argv[0]); sort_cpp.count(__LINE__); }
 
     // Go through the argumets
     for (int idx = 1; idx < argc; ++idx)
@@ -114,25 +119,25 @@ void process_command_line(Options& opts, int argc, char* argv[])
         string opt(argv[idx]);
 
         // Process the option
-        if (opt == "-h")   { output_usage_and_exit(argv[0]); }
-        if (opt == "-qs")  { opts._quick_sort         = true;  }
-        if (opt == "-ss")  { opts._selection_sort     = true;  }
-        if (opt == "-bs")  { opts._bubble_sort        = true;  }
-        if (opt == "-od")  { opts._output_data        = true;  }
-        if (opt == "-osd") { opts._output_sorted_data = true;  }
+        if (opt == "-h")   { output_usage_and_exit(argv[0]); sort_cpp.count(__LINE__); }
+        if (opt == "-qs")  { opts._quick_sort         = true; sort_cpp.count(__LINE__);  }
+        if (opt == "-ss")  { opts._selection_sort     = true; sort_cpp.count(__LINE__);  }
+        if (opt == "-bs")  { opts._bubble_sort        = true; sort_cpp.count(__LINE__);  }
+        if (opt == "-od")  { opts._output_data        = true; sort_cpp.count(__LINE__);  }
+        if (opt == "-osd") { opts._output_sorted_data = true; sort_cpp.count(__LINE__);  }
         if (opt == "-sz")
         {
-            if (idx + 1 < argc) { ++idx; opts._data_size = atoi(argv[idx]); }
+            if (idx + 1 < argc) { ++idx; sort_cpp.count(__LINE__); opts._data_size = atoi(argv[idx]); sort_cpp.count(__LINE__); }
             else                { output_error_and_exit("Value for -sz option is missing."); }
         }
         if (opt == "-rs")
         {
-            if (idx + 1 < argc) { ++idx; opts._seed = atoi(argv[idx]); }
+            if (idx + 1 < argc) { ++idx; sort_cpp.count(__LINE__); opts._seed = atoi(argv[idx]); sort_cpp.count(__LINE__); }
             else                { output_error_and_exit("Value for -rs option is missing."); }
         }
         if (opt == "-mod")
         {
-            if (idx + 1 < argc) { ++idx; opts._mod = atoi(argv[idx]); }
+            if (idx + 1 < argc) { ++idx; sort_cpp.count(__LINE__); opts._mod = atoi(argv[idx]); sort_cpp.count(__LINE__); }
             else                { output_error_and_exit("Value for -mod option is missing."); }
         }
         if ( (opt != "-h")   &&
@@ -145,14 +150,14 @@ void process_command_line(Options& opts, int argc, char* argv[])
              (opt != "-rs")  &&
              (opt != "-mod") )
         {
-           output_error_and_exit(string("Error: Bad option: ") + opt);
+           output_error_and_exit(string("Error: Bad option: ") + opt); sort_cpp.count(__LINE__);
         }
     }
 }
 
 //==============================================================================
 void output_usage_and_exit(const string& cmd)
-{
+{ sort_cpp.count(__LINE__, __func__);
     cout << 
        "Usage: " << cmd << " [options]\n"
        "  Options:\n"
@@ -171,17 +176,17 @@ void output_usage_and_exit(const string& cmd)
        "  specified from the following order will be done.\n"
        "     1. quick\n"
        "     2. selection\n"
-       "     3. bubble\n";
+       "     3. bubble\n"; sort_cpp.count(__LINE__);
 
-    exit(0);
+    exit(0); sort_cpp.count(__LINE__);
 }
 
 //==============================================================================
 void output_error_and_exit(const string& msg)
-{
-    cerr << "Error: " << msg << "\n";
+{ sort_cpp.count(__LINE__, __func__);
+    cerr << "Error: " << msg << "\n"; sort_cpp.count(__LINE__);
 
-    exit(1);
+    exit(1); sort_cpp.count(__LINE__);
 }
 
 

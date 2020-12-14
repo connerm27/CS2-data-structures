@@ -11,13 +11,13 @@
 #include "profile.hpp";
 profile simple_cpp("simple.cpp");
 
-profile foo_cpp("foo.cpp");
+profile -qs("-qs.cpp");
 
-int search(int tbl[], int n, int key) {
+int search(int tbl[], int n, int key) { simple_cpp.count(__LINE__, __func__);
     int result = -1;
     for (int i = 0; i < n; ++i) {
         if (key == tbl[i]) {
-            result = i;
+            result = i; simple_cpp.count(__LINE__);
         }
     }
     return result;
@@ -25,14 +25,18 @@ int search(int tbl[], int n, int key) {
 
 
 
-int main() {
+int main() { simple_cpp.count(__LINE__, __func__);
 
     int lst[5] = {2, 4, 6, 8, 10};
-    std::cout << search(lst, 5, 6);
-    std::cout << std::endl;
+    std::cout << search(lst, 5, 6); simple_cpp.count(__LINE__);
+    std::cout << std::endl; simple_cpp.count(__LINE__);
     
-    std::cout << "Done";
-    std::cout << std::endl;
-    return 0;
+    std::cout << "Done"; simple_cpp.count(__LINE__);
+    std::cout << std::endl; simple_cpp.count(__LINE__);
+    
+std::cout << -qs << std::endl;
+
+std::cout << simple_cpp << std::endl;
+return 0;
 }
 

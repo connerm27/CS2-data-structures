@@ -277,7 +277,6 @@ void AST::mainHeader(const std::vector<std::string>& profileName) {
 
 
 
-
 }
 
 
@@ -299,7 +298,6 @@ void AST::fileHeader(const std::string& profileName) {
 		}
 	}
 
-
 }
 
 
@@ -315,10 +313,34 @@ void AST::mainReport(const std::vector<std::string>& profileName) {
     //Then start from the end() of this function and iterate
     // backwards until you find a return stmt.   You'll want
     // to insert the report statements before this return.
-    
-    
+
+for (auto it = child.begin(); it != child.end(); it++) {
+
+	if((*it)->tag == "function") {
+
+		if((*it)->getChild("name")->getName() == "main") {
+
+			for(auto it2 = (*it)->child.rbegin(); it2 != (*it)->child.rend(); it2++) {
+				if((*it2) -> tag == "block") {
+					for(auto it3 = (*it2)->child.begin(); it3 != (*it2)->child.end(); it3++) {
+
+						if((*it3)->tag == "return") {
+							for(auto it4 = profileName.rbegin(); it4 != profileName.rend(); it4++) {
+
+								child.insert(it3, new AST(token, "\nstd::cout << " + (*it4) + " << std::endl;\n" ));
+							}
+						}
+
+					}
+				}
+			}
+
+			return;
+		}
+	}
 }
 
+}
 
 /////////////////////////////////////////////////////////////////////
 // Adds in a line to count the number of times each function is executed.
@@ -334,6 +356,24 @@ void AST::funcCount(const std::string& profileName) {
     //        Find block and insert count as first line in block
     //
 
+	for ( auto it = child.begin(); it != child.end(); it++) {
+		if((*it)->tag == "function" || (*it)->tag == "constructor" || (*it)->tag == "destructor") {
+
+			for( auto it2 = (*it)->child.begin(); it2 != (*it)->child.end(); it2++) {
+				if((*it2)-> tag == "block") {
+					for( auto it3 = (*it2)->child.begin(); it3 != (*it2)->child.end(); it3++) {
+						//	std::cout << (*it3)->tag << std::endl;
+							it3++;
+							child.insert(it3, new AST(token, " " + profileName + ".count(__LINE__, __func__);"));
+					//
+							break;
+					}
+				}
+			}
+
+		}
+
+	}
 
 
 
@@ -351,8 +391,23 @@ void AST::lineCount(const std::string& profileName) {
     
     // Recursively check for expr_stmt within all blocks
     // The basis is when isStopTag is true.
-    
-    
+
+	for(auto it = child.begin(); it != child.end(); it++) {
+		if((*it)->tag == "expr_stmt") {
+			it++;
+			child.insert(it, new AST(token, " " + profileName + ".count(__LINE__);"));
+
+		} else if((*it)->tag == "function" || (*it)->tag == "for" || (*it)->tag == "while")  {
+			(*it)->getChild("block")->lineCount(profileName);
+		} else if((*it)->tag == "if") {
+			(*it)->getChild("then")->getChild("block")->lineCount(profileName);
+		}
+
+
+	}
+
+
+
 }
 
 
