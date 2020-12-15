@@ -54,3 +54,4 @@ m3 : 95 -- your assembler program not comverts all expressions. Programs stops a
 p4
 m1: 100
 m2: 100
+m3: 100
